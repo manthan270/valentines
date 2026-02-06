@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Heart, Sparkles } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 
 interface Page {
     id: number;
@@ -167,14 +167,22 @@ export default function FlipBook() {
                     </AnimatePresence>
 
                     {/* Navigation */}
-                    <div className="absolute bottom-6 left-0 right-0 flex justify-between items-center px-6 z-50 pointer-events-auto">
-                        <button onClick={goToPrevPage} disabled={currentPage === 0}>
-                            <ChevronLeft className="w-6 h-6 text-white" />
-                        </button>
-                        <button onClick={goToNextPage} disabled={currentPage === pages.length - 1}>
-                            <ChevronRight className="w-6 h-6 text-white" />
-                        </button>
-                    </div>
+                    {currentPage > 0 && (
+                        <div
+                            className="nav-arrow arrow-left"
+                            onClick={goToPrevPage}
+                        >
+                            ‹
+                        </div>
+                    )}
+                    {currentPage < pages.length - 1 && (
+                        <div
+                            className="nav-arrow arrow-right"
+                            onClick={goToNextPage}
+                        >
+                            ›
+                        </div>
+                    )}
                 </motion.div>
             </div>
 

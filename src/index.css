@@ -78,3 +78,41 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(236, 72, 153, 0.5);
 }
+
+.nav-arrow {
+  position: absolute;
+  bottom: 24px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-size: 20px;
+  color: white;
+
+  background: rgba(255, 105, 180, 0.6);
+
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.nav-arrow:hover {
+  transform: scale(1.1);
+}
+
+.arrow-left {
+  left: 16px;
+}
+
+.arrow-right {
+  right: 16px;
+}
