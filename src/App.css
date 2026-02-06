@@ -1,0 +1,114 @@
+/* App-specific styles */
+
+/* Smooth transitions for all interactive elements */
+button {
+  transition: all 0.3s ease;
+}
+
+/* Card hover effect */
+.proposal-card {
+  backdrop-filter: blur(10px);
+}
+
+/* Button shine effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  /* don't animate by default; animate on hover to reduce motion density */
+  opacity: 0;
+}
+
+.btn-shine:hover::after,
+.btn-shine:focus-visible::after {
+  opacity: 1;
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Heart beat animation for celebration */
+/* Single heartbeat animation now centralized in index.css as `pulse-heart`. */
+
+/* Confetti container */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Gradient text utility removed — use the global gradient animation if needed */
+
+/* Floating animation for decorative elements */
+/* Removed float-gentle and pulse-glow utilities to reduce animation density. */
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .proposal-card {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .celebration-image {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* YES button inviting hover: soft glow + heartbeat/pulse on hover */
+.yes-invite {
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.15);
+  will-change: transform, box-shadow;
+}
+.yes-invite:hover,
+.yes-invite:focus-visible {
+  animation: heartBeat 1.2s ease-in-out infinite;
+  box-shadow: 0 12px 40px rgba(236, 72, 153, 0.22), 0 6px 18px rgba(190, 24, 93, 0.08);
+}
+
+/* Slightly reduce animation intensity for accessibility when requested */
+@media (prefers-reduced-motion: reduce) {
+  .yes-invite:hover,
+  .yes-invite:focus-visible {
+    animation: none;
+  }
+}
+
+/* No-button small tweaks to keep movements feeling playful */
+.no-button-safe {
+  touch-action: manipulation;
+}
